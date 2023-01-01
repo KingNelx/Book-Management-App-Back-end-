@@ -1,56 +1,51 @@
 package backendpets.Controller;
 
-
-import backendpets.Model.Pet;
-import backendpets.Repository.PetRepo;
+import backendpets.Model.Pets;
+import backendpets.Repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.List;
 
-
 @RestController
-@RequestMapping
-@CrossOrigin
+@RequestMapping("/pets")
+@CrossOrigin("http://localhost:5173/")
 public class PetController {
 
     @Autowired
-    private PetRepo petRepo;
-
-    @GetMapping("/getAllPets")
-    List<Pet> getAllPets(){
-        return petRepo.findAll();
-    }
+    private PetRepository petRepository;
 
     @PostMapping("/addPet")
-    Pet addPet(@RequestBody Pet addPet) {
-        return petRepo.save(addPet);
+    Pets addPet(@RequestBody Pets addPet){
+        return petRepository.save(addPet);
+    }
+
+    @GetMapping("/getAllPets")
+    List<Pets> getAllPets(){
+        return petRepository.findAll();
     }
 
     @GetMapping("/getAllDogs")
-    List<Pet> getAllDogs() {
-        return petRepo.getAllPetsByTypeOfPet("Dog");
+    List<Pets> getAllDogs(){
+        return petRepository.findAllByTypeOfPet("Dog");
     }
 
     @GetMapping("/getAllCats")
-    List<Pet> getAllCats(){
-        return petRepo.getAllPetsByTypeOfPet("Cat");
+    List<Pets> getAllCats(){
+        return petRepository.findAllByTypeOfPet("Cat");
     }
 
     @GetMapping("/getAllBirds")
-    List<Pet> getAllBirds(){
-        return petRepo.getAllPetsByTypeOfPet("Bird");
+    List<Pets> getAllBirds(){
+        return petRepository.findAllByTypeOfPet("Bird");
     }
 
     @GetMapping("/getAllSnakes")
-    List<Pet> getAllSnakes(){
-        return petRepo.getAllPetsByTypeOfPet("Snake");
+    List<Pets> getAllSnakes(){
+        return petRepository.findAllByTypeOfPet("Snake");
     }
 }
