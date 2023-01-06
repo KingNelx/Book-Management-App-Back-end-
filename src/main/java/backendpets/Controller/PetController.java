@@ -48,4 +48,9 @@ public class PetController {
     List<Pets> getAllSnakes(){
         return petRepository.findAllByTypeOfPet("Snake");
     }
+
+    @GetMapping("/getAllRabbits")
+    List<Pets> getAllRabbits(){
+        return petRepository.findAllByTypeOfPet("Rabbit");
+    }
 }
