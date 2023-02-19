@@ -58,4 +58,9 @@ public class PetController{
         return petRepository.findAllByTypeOfPet("birds");
     }
 
+    @GetMapping("/queryAllPetsVaccinated")
+    List<Pets> queryAllPetsVaccinated(){
+        return petRepository.findAllByHasVaccine("yes");
+    }
+
 }
