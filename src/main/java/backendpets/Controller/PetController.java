@@ -28,7 +28,6 @@ public class PetController{
         return petRepository.findAll();
     }
 
-
     @GetMapping("/queryAllDogs")
     List<Pets> queryAllDogs(){
         return petRepository.findAllByTypeOfPet("dog");
@@ -37,6 +36,26 @@ public class PetController{
     @GetMapping("/queryAllCats")
     List<Pets> queryAllCats(){
         return petRepository.findAllByTypeOfPet("cat");
+    }
+
+    @GetMapping("/queryAllRabbits")
+    List<Pets> queryAllRabbits(){
+        return petRepository.findAllByTypeOfPet("rabbit");
+    }
+    
+    @GetMapping("/queryAllTurtles")
+    List<Pets> queryAllTurtles(){
+        return petRepository.findAllByTypeOfPet("turtle");
+    }
+
+    @GetMapping("/queryAllSnakes")
+    List<Pets> queryAllSnakes(){
+        return petRepository.findAllByTypeOfPet("snakes");
+    }
+
+    @GetMapping("/queryAllBirds")
+    List<Pets> queryAllBirds(){
+        return petRepository.findAllByTypeOfPet("birds");
     }
 
 }

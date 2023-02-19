@@ -28,7 +28,7 @@ public class Pets{
     private @Getter @Setter String ownerName;
     @NotBlank @NonNull
     private @Getter @Setter String petName;
-    @NotBlank @NonNull
+    @NotBlank @NonNull 
     private @Getter @Setter String typeOfPet;
     @NotBlank @NonNull
     private @Getter @Setter String address;
