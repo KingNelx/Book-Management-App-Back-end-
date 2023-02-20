@@ -39,5 +39,4 @@ public class Pets{
     private @Getter @Setter int petAge;
     @NotBlank @NonNull
     private @Getter @Setter String hasVaccine;
-
 }
