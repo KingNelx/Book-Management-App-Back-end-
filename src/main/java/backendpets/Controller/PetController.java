@@ -66,4 +66,9 @@ public class PetController{
         return petRepository.findAllByHasVaccine("yes");
     }
 
+    @GetMapping("/queryAllMalePets")
+    List<Pets> queryAllMalePets(){
+        return petRepository.findAllByPetGender("male");
+    }
+
 }

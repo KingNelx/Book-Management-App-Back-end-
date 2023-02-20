@@ -31,6 +31,8 @@ public class Pets{
     @NotBlank @NonNull 
     private @Getter @Setter String typeOfPet;
     @NotBlank @NonNull
+    private @Getter @Setter String petGender;
+    @NotBlank @NonNull
     private @Getter @Setter String address;
     @NotNull
     @Min(0)
