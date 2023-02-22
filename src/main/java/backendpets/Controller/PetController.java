@@ -71,4 +71,6 @@ public class PetController{
         return petRepository.findAllByPetGender("male");
     }
 
+    
+
 }
