@@ -53,12 +53,12 @@ public class PetController{
 
     @GetMapping("/queryAllSnakes")
     List<Pets> queryAllSnakes(){
-        return petRepository.findAllByTypeOfPet("snakes");
+        return petRepository.findAllByTypeOfPet("snake");
     }
 
     @GetMapping("/queryAllBirds")
     List<Pets> queryAllBirds(){
-        return petRepository.findAllByTypeOfPet("birds");
+        return petRepository.findAllByTypeOfPet("bird");
     }
 
     @GetMapping("/queryAllPetsVaccinated")
