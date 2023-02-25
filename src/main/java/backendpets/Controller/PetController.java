@@ -31,6 +31,12 @@ public class PetController{
         return petRepository.findAll();
     }
 
+    @GetMapping("/queryAllOwners")
+    List<Pets> queryAllOwners(){
+        return petRepository.findAll();
+    }
+
+
     @GetMapping("/queryAllDogs")
     List<Pets> queryAllDogs(){
         return petRepository.findAllByTypeOfPet("dog");
