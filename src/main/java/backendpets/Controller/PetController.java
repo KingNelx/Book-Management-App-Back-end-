@@ -31,6 +31,17 @@ public class PetController{
         return petRepository.findAll();
     }
 
+
+    @GetMapping("/withVaccine")
+    List<Pets> withVaccine() {
+        return petRepository.findAllByHasVaccine("YES");
+    }
+
+    @GetMapping("/withNoVaccine")
+    List<Pets> withNoVaccine(){
+        return petRepository.findAllByHasVaccine("NO");
+        
+    }
     @GetMapping("/queryAllOwners")
     List<Pets> queryAllOwners(){
         return petRepository.findAll();
@@ -39,42 +50,42 @@ public class PetController{
 
     @GetMapping("/queryAllDogs")
     List<Pets> queryAllDogs(){
-        return petRepository.findAllByTypeOfPet("dog");
+        return petRepository.findAllByTypeOfPet("DOG");
     }
 
     @GetMapping("/queryAllCats")
     List<Pets> queryAllCats(){
-        return petRepository.findAllByTypeOfPet("cat");
+        return petRepository.findAllByTypeOfPet("CAT");
     }
 
     @GetMapping("/queryAllRabbits")
     List<Pets> queryAllRabbits(){
-        return petRepository.findAllByTypeOfPet("rabbit");
+        return petRepository.findAllByTypeOfPet("RABBIT");
     }
     
     @GetMapping("/queryAllTurtles")
     List<Pets> queryAllTurtles(){
-        return petRepository.findAllByTypeOfPet("turtle");
+        return petRepository.findAllByTypeOfPet("TURTLE");
     }
 
     @GetMapping("/queryAllSnakes")
     List<Pets> queryAllSnakes(){
-        return petRepository.findAllByTypeOfPet("snake");
+        return petRepository.findAllByTypeOfPet("SNAKE");
     }
 
     @GetMapping("/queryAllBirds")
     List<Pets> queryAllBirds(){
-        return petRepository.findAllByTypeOfPet("bird");
-    }
-
-    @GetMapping("/queryAllPetsVaccinated")
-    List<Pets> queryAllPetsVaccinated(){
-        return petRepository.findAllByHasVaccine("yes");
+        return petRepository.findAllByTypeOfPet("BIRD");
     }
 
     @GetMapping("/queryAllMalePets")
     List<Pets> queryAllMalePets(){
-        return petRepository.findAllByPetGender("male");
+        return petRepository.findAllByPetGender("MALE");
+    }
+
+    @GetMapping("/queryAllFemalePets")
+    List<Pets> queryAllFemalePets(){
+        return petRepository.findAllByPetGender("FEMALE");
     }
 
     

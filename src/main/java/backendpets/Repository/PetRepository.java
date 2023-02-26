@@ -8,4 +8,5 @@ public interface PetRepository extends JpaRepository<Pets, Long>{
     List<Pets> findAllByTypeOfPet(String typeofpet);
     List<Pets> findAllByHasVaccine(String hasvaccine);
     List<Pets> findAllByPetGender(String petgender);
+    
 }
