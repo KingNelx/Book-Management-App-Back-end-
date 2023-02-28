@@ -4,6 +4,7 @@ import backendpets.Exception.PetNotFound;
 import backendpets.Model.Pets;
 import backendpets.Repository.PetRepository;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -98,4 +100,15 @@ public class PetController {
     return petRepository.findById(id)
     .orElseThrow( () -> new PetNotFound(id));
   }
+
+  @PutMapping("/pet/{id}")
+  Pets updatePets(@RequestBody Pets newData, @PathVariable Long id) {
+   return petRepository.findById(id)
+   .map(pet -> {
+      pet.setPetGender(newData.getPetGender());
+      return pet;
+   }).orElse(null);
 }
+
+  }
+
