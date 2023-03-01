@@ -102,13 +102,18 @@ public class PetController {
   }
 
   @PutMapping("/pet/{id}")
-  Pets updatePets(@RequestBody Pets newData, @PathVariable Long id) {
-   return petRepository.findById(id)
-   .map(pet -> {
-      pet.setPetGender(newData.getPetGender());
-      return pet;
-   }).orElse(null);
-}
-
+  Pets updatePet(@RequestBody Pets newPetData, @PathVariable Long id){
+      return petRepository.findById(id)
+      .map(pet -> {
+          pet.setOwnerName(newPetData.getOwnerName());
+          pet.setPetName(newPetData.getPetName());
+          pet.setTypeOfPet(newPetData.getTypeOfPet());
+          pet.setPetGender(newPetData.getPetGender());
+          pet.setAddress(newPetData.getAddress());
+          pet.setPetAge(newPetData.getPetAge());
+          pet.setHasVaccine(newPetData.getHasVaccine());
+          return petRepository.save(pet);
+      }).orElseThrow(() -> new PetNotFound(id));
+  }
   }
 
