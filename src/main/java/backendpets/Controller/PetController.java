@@ -4,7 +4,7 @@ import backendpets.Exception.PetNotFound;
 import backendpets.Model.Pets;
 import backendpets.Repository.PetRepository;
 import java.util.List;
-import java.util.Optional;
+
 
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
