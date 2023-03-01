@@ -4,11 +4,10 @@ import backendpets.Exception.PetNotFound;
 import backendpets.Model.Pets;
 import backendpets.Repository.PetRepository;
 import java.util.List;
-
-
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -97,23 +96,32 @@ public class PetController {
 
   @GetMapping("/pet/{id}")
   Pets getPetsByID(@PathVariable Long id) {
-    return petRepository.findById(id)
-    .orElseThrow( () -> new PetNotFound(id));
+    return petRepository.findById(id).orElseThrow(() -> new PetNotFound(id));
   }
 
   @PutMapping("/pet/{id}")
-  Pets updatePet(@RequestBody Pets newPetData, @PathVariable Long id){
-      return petRepository.findById(id)
+  Pets updatePet(@RequestBody Pets newPetData, @PathVariable Long id) {
+    return petRepository
+      .findById(id)
       .map(pet -> {
-          pet.setOwnerName(newPetData.getOwnerName());
-          pet.setPetName(newPetData.getPetName());
-          pet.setTypeOfPet(newPetData.getTypeOfPet());
-          pet.setPetGender(newPetData.getPetGender());
-          pet.setAddress(newPetData.getAddress());
-          pet.setPetAge(newPetData.getPetAge());
-          pet.setHasVaccine(newPetData.getHasVaccine());
-          return petRepository.save(pet);
-      }).orElseThrow(() -> new PetNotFound(id));
-  }
+        pet.setOwnerName(newPetData.getOwnerName());
+        pet.setPetName(newPetData.getPetName());
+        pet.setTypeOfPet(newPetData.getTypeOfPet());
+        pet.setPetGender(newPetData.getPetGender());
+        pet.setAddress(newPetData.getAddress());
+        pet.setPetAge(newPetData.getPetAge());
+        pet.setHasVaccine(newPetData.getHasVaccine());
+        return petRepository.save(pet);
+      })
+      .orElseThrow(() -> new PetNotFound(id));
   }
 
+  @DeleteMapping("/pet/{id}")
+  String deletePet(@PathVariable Long id) {
+      if(!petRepository.existsById(id)){
+          throw new PetNotFound(id);
+      }
+      petRepository.deleteById(id);
+      return " Pet Data with id: " + id + " has been deleted";
+  }
+}
