@@ -9,6 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Entity;
@@ -29,4 +30,7 @@ public class Owner {
     private @Getter @Setter @NotEmpty @NotBlank String emailAddress;
     private @Getter @Setter @NotEmpty @NotBlank String contactNumber;
     
+    @OneToOne(mappedBy = "owner")
+    // this means that the relationship between owner and pet and mappedBy "owner"
+    private Pet pet;
 }
