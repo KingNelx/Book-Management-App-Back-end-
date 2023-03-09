@@ -13,6 +13,22 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Email;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "owners_table")
+@Entity
 public class Owners {
+    
+    @Id
+    @GeneratedValue
+
+    private @Getter @Setter Long id;
+    private @Getter @Setter @NotBlank @NotEmpty String firstName;
+    private @Getter @Setter @NotBlank @NotEmpty String lastName;
+    private @Getter @Setter @Email String emailAddress;
+    private @Getter @Setter @NotBlank @NotEmpty String phoneNumber;
+    private @Getter @Setter @NotNull int age;
+
+    
     
 }
