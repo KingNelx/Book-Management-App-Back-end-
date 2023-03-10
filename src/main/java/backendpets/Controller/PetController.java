@@ -68,4 +68,14 @@ public class PetController {
     List<Pets> findAllMouse(){
         return petsRepo.findAllByTypeOfPet("MOUSE");
     }
+
+    @GetMapping("/hasVaccine")
+    List<Pets> vaccinated(){
+        return petsRepo.findAllByHasVaccine("YES");
+    }
+
+    @GetMapping("/noVaccine")
+    List<Pets> notVaccinated(){
+        return petsRepo.findAllByHasVaccine("NO");
+    }
 }

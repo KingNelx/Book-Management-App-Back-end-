@@ -7,4 +7,5 @@ import backendpets.Model.Pets;
 public interface PetsRepo extends JpaRepository<Pets, Long>{
     List<Pets> findAllByTypeOfPet(String typeOfPet);
     List<Pets> findAllByPetGender(String petGender);
+    List<Pets> findAllByHasVaccine(String hasVaccine);
 }
