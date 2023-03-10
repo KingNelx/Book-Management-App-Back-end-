@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:5173/", allowCredentials = "true")
 public class PetController {
 
     @Autowired
@@ -56,5 +57,15 @@ public class PetController {
     @GetMapping("/bird")
     List<Pets> findAllBirds(){
         return petsRepo.findAllByTypeOfPet("BIRD");
+    }
+
+    @GetMapping("/turtle")
+    List<Pets> findAllTurtles(){
+        return petsRepo.findAllByTypeOfPet("TURTLE");
+    }
+
+    @GetMapping("/mouse")
+    List<Pets> findAllMouse(){
+        return petsRepo.findAllByTypeOfPet("MOUSE");
     }
 }
