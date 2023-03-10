@@ -14,12 +14,47 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class PetController {
-    
+
     @Autowired
     private PetsRepo petsRepo;
 
     @GetMapping("/getAllPets")
     List<Pets> getAllPets(){
         return petsRepo.findAll();
+    }
+
+    @PostMapping("/addPet")
+    Pets addPet(@RequestBody Pets addPet){
+        return petsRepo.save(addPet);
+    }
+
+    @GetMapping("/male")
+    List<Pets> getAllMales(){
+        return petsRepo.findAllByPetGender("MALE");
+    }
+
+    @GetMapping("/female")
+    List<Pets> getAllFemales(){
+        return petsRepo.findAllByPetGender("FEMALE");
+    }
+
+    @GetMapping("/dog")
+    List<Pets> findAllDogs(){
+        return petsRepo.findAllByTypeOfPet("DOG");
+    }
+
+    @GetMapping("/cat")
+    List<Pets> findAllCats(){
+        return petsRepo.findAllByTypeOfPet("CAT");
+    }
+
+    @GetMapping("/rabbit")
+    List<Pets> findAllRabbits(){
+        return petsRepo.findAllByTypeOfPet("RABBIT");
+    }
+
+    @GetMapping("/bird")
+    List<Pets> findAllBirds(){
+        return petsRepo.findAllByTypeOfPet("BIRD");
     }
 }
