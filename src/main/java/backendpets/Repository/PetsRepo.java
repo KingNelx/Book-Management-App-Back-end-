@@ -6,5 +6,5 @@ import backendpets.Model.Pets;
 
 public interface PetsRepo extends JpaRepository<Pets, Long>{
     List<Pets> findAllByTypeOfPet(String typeOfPet);
-    
+
 }

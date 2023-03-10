@@ -31,4 +31,5 @@ public class Pets {
     private String address;
     private String typeOfPet;
     private String hasVaccine;
+
 }
