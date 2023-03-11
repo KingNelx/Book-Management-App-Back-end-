@@ -3,7 +3,6 @@ package backendpets.Model;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -12,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor
@@ -32,10 +32,10 @@ public class Pets {
     @NotEmpty
     private String petName;
 
-    @NonNull
+    @NotNull
     private int ownerAge;
 
-    @NonNull
+    @NotNull
     private int petAge;
 
     @NotBlank
