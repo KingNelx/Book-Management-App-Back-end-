@@ -16,7 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
+@Document(collection = "Task")
 public class Task {
 
     @Id

@@ -16,7 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Document
+@Document(collection = "Description")
 public class Description {
 
     @Id
