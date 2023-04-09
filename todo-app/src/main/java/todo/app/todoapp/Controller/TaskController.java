@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,33 +15,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import todo.app.todoapp.Model.Tasks;
-import todo.app.todoapp.Service.TasksService;
+import todo.app.todoapp.Service.TaskService;
 
 @RestController
 @RequestMapping("/api/task")
 public class TaskController {
 
     @Autowired
-    private TasksService tasksService;
+    private TaskService taskService;
 
-    @GetMapping("/getAllTasks")
-    List<Tasks> queryAllTasks() {
-        return tasksService.getAllTasks();
+    @PostMapping("/addTasks")
+    public ResponseEntity<String> addNewTask(@RequestBody Tasks newTasks) {
+        return taskService.addNewTask(newTasks);
     }
+
+    
 
     @GetMapping("/taskByID/{id}")
-    Optional<Tasks> queryTaskByID(@PathVariable String id) {
-        return tasksService.getTaskByID(id);
+    public Optional<Tasks> getTaskByID(@PathVariable String id) {
+        return taskService.getTaskByID(id);
     }
 
-    @PostMapping("/createTask")
-    ResponseEntity<Tasks> addNewTask(@RequestBody Tasks newTasks) {
-        return tasksService.addNewTask(newTasks);
+    @PutMapping("updateTaskByID/{id}")
+    public Tasks updateTaskByID(@RequestBody Tasks update, @PathVariable("id") String id) {
+        return taskService.updateTaskByID(update, id);
     }
 
-    @PutMapping("/updateTaskByID/{id}")
-    ResponseEntity<Tasks> updateTaskByID(@PathVariable String id, @RequestBody Tasks newTasks) {
-        return tasksService.updateTaskByID(id, newTasks);
+    @DeleteMapping("/deleteByID/{id}")
+    public ResponseEntity<String> deleteTaskByID(@PathVariable String id) {
+        return taskService.deleteTaskByID(id);
     }
 
 }

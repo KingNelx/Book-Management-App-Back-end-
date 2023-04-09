@@ -14,5 +14,4 @@ public interface DescriptionService {
 
     // get description by ID
     Optional<Description> getDescriptionByID(String id);
-
 }
