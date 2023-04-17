@@ -18,7 +18,7 @@ public class AuthorImpl implements AuthorService {
     private AuthorRepo authorRepo;
 
     @Override
-    public List <Author> getAllAuthors(){
+    public List <Author> getAuthors(){
         if(authorRepo.findAll().isEmpty()){
             throw new HttpClientErrorException(HttpStatus.NO_CONTENT);
         }

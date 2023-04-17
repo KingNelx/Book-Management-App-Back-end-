@@ -11,7 +11,7 @@ import book.app.BookApp.Model.Author;
 public interface AuthorService { 
     
     // get all authors
-    List <Author> getAllAuthors();
+    List <Author> getAuthors();
 
     // get author by id
     Optional <Author> getAuthorByID(String id);
