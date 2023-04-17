@@ -17,7 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Document(collection = "Reviews")
+@Document(collection = "Review")
 public class Reviews {
 
     @Id
