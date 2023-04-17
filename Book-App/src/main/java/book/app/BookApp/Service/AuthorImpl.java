@@ -1,8 +1,14 @@
 package book.app.BookApp.Service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+
+import book.app.BookApp.Model.Author;
 import book.app.BookApp.Repository.AuthorRepo;
 
 @Service
@@ -10,5 +16,30 @@ public class AuthorImpl implements AuthorService {
     
     @Autowired
     private AuthorRepo authorRepo;
+
+    @Override
+    public List <Author> getAllAuthors(){
+        if(authorRepo.findAll().isEmpty()){
+            throw new HttpClientErrorException(HttpStatus.NO_CONTENT);
+        }
+        return authorRepo.findAll();
+    }
+
+    @Override
+    public Optional <Author> getAuthorByID(String id){
+        if(!authorRepo.findById(id).isPresent()){
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
+        }
+        return authorRepo.findById(id);
+    }
+
+    /*
+     *   
+    // get all authors
+    List <Author> getAllAuthors();
+
+    // get author by id
+    Optional <Author> getAuthorByID(String id);
+     */
 
 }
