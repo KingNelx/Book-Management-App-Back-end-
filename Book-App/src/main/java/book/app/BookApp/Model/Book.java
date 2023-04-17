@@ -26,8 +26,8 @@ public class Book {
     private @Getter @Setter String genre;
 
     @DBRef
-    private Author author;
+    private @Getter @Setter Author author;
 
     @DBRef
-    private Reviews reviews;
+    private @Getter @Setter Reviews reviews;
 }
