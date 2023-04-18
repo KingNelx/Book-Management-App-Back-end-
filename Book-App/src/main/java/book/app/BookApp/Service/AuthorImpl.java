@@ -33,13 +33,4 @@ public class AuthorImpl implements AuthorService {
         return authorRepo.findById(id);
     }
 
-    /*
-     *   
-    // get all authors
-    List <Author> getAllAuthors();
-
-    // get author by id
-    Optional <Author> getAuthorByID(String id);
-     */
-
 }

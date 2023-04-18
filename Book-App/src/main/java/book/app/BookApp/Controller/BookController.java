@@ -2,6 +2,7 @@ package book.app.BookApp.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import book.app.BookApp.Service.BookService;
 import java.util.List;
 @RestController
 @RequestMapping("/api/book")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class BookController {
     
     @Autowired
