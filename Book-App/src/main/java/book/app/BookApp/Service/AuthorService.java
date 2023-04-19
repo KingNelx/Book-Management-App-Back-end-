@@ -15,4 +15,7 @@ public interface AuthorService {
 
     // get author by id
     Optional <Author> getAuthorByID(String id);
+
+    // delete author by id
+    String deleteAuthorByID(String id);
 }

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,5 +30,10 @@ public class AuthorController {
     @GetMapping("/getAuthorByID/{id}")
     public Optional <Author> getAuthorByID(@PathVariable String id){
         return authorService.getAuthorByID(id);
+    }
+
+    @DeleteMapping("/deleteAuthorByID/{id}")
+    public String deleteAuthorByID(@PathVariable String id){
+        return authorService.deleteAuthorByID(id);
     }
 }

@@ -33,4 +33,12 @@ public class AuthorImpl implements AuthorService {
         return authorRepo.findById(id);
     }
 
+    @Override
+    public String deleteAuthorByID(String id){
+        if(!authorRepo.findById(id).isPresent()){
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
+        }
+        return "Author with ID: " + id + " has been DELETED ";
+    }
+
 }
