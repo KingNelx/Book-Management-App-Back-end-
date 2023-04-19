@@ -64,7 +64,6 @@ public class BookImpl implements BookService {
   @Override
   public ResponseEntity<String> deleteBookByID(String id) {
     Optional<Book> bookHandler = bookRepo.findById(id);
-
     if(!bookHandler.isPresent()){
         throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
     }

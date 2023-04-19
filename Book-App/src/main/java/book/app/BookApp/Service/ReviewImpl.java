@@ -39,9 +39,23 @@ public class ReviewImpl implements ReviewService {
         if(!reviewRepo.findById(id).isPresent()){
             throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
         }
-        return ResponseEntity.ok("Review with ID: " + id + " has been DELETED ");
+
+        reviewRepo.deleteById(id);
+        return ResponseEntity.ok("Reviews with ID: " + id + " has been DELETED ");
     }
 
 
+    @Override
+    public ResponseEntity <Reviews> updateCommentReviews(String id, List <String> comments){
+        Optional <Reviews> reviewHandler = reviewRepo.findById(id);
+        if(reviewHandler.isPresent()){
+            Reviews reviews = reviewHandler.get();
+            reviews.setComments(comments);
+            reviewRepo.save(reviews);
+            return ResponseEntity.ok(reviews);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

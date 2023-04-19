@@ -21,7 +21,6 @@ import lombok.Setter;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private @Getter @Setter String id;
     private @Getter @Setter String firstName;
     private @Getter @Setter String lastName;

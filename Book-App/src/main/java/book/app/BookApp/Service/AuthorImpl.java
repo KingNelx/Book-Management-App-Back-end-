@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
@@ -38,7 +39,47 @@ public class AuthorImpl implements AuthorService {
         if(!authorRepo.findById(id).isPresent()){
             throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
         }
+
+        authorRepo.deleteById(id);
         return "Author with ID: " + id + " has been DELETED ";
+    }
+
+    @Override
+    public ResponseEntity <Author> updateAchievements(String id, List <String> newAchievements){
+        Optional <Author> authorHandler = authorRepo.findById(id);
+        if(authorHandler.isPresent()){
+            Author author = authorHandler.get();
+            author.setAchievements(newAchievements);
+            authorRepo.save(author);
+            return ResponseEntity.ok(author);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @Override
+    public ResponseEntity <Author> updateAwards(String id, List <String> newAwards){
+        Optional <Author> authorHandler = authorRepo.findById(id);
+        if(authorHandler.isPresent()){
+            Author author = authorHandler.get();
+            author.setAchievements(newAwards);
+            authorRepo.save(author);
+            return ResponseEntity.ok(author);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @Override
+    public ResponseEntity <Author> updateHonors(String id, List <String> newHonors){
+        Optional <Author> authorHandler = authorRepo.findById(id);
+        if(authorHandler.isPresent()){
+            Author author = authorHandler.get();
+            author.setHonors(newHonors);
+            authorRepo.save(author);
+            return ResponseEntity.ok(author);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }

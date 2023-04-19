@@ -21,7 +21,7 @@ import lombok.Setter;
 public class Reviews {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    
     private @Getter @Setter String id;
     @ElementCollection
     private @Getter @Setter List<String> comments;

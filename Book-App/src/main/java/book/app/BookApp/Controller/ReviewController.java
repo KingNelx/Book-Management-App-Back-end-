@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,4 +39,10 @@ public class ReviewController {
     public ResponseEntity <String> deleteReviewsByID(@PathVariable String id){
         return reviewService.deleteReviewsByID(id);
     }
+
+    @PutMapping("/updateReviewsByID/{id}/comments")
+    public ResponseEntity <Reviews> updateCommentReviews(@PathVariable String id, @RequestBody List <String> newComments){
+        return reviewService.updateCommentReviews(id, newComments);
+    }
+    
 }
