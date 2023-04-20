@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import book.app.BookApp.Model.Book;
+import book.app.BookApp.Repository.BookRepo;
 import book.app.BookApp.Service.BookService;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +23,9 @@ public class BookController {
     
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private BookRepo bookRepo;
 
     @GetMapping("/getAllBooks")
     public List <Book> gettAllBooks(){
@@ -41,5 +45,35 @@ public class BookController {
     @DeleteMapping("/deleteBookByID/{id}")
     public ResponseEntity<String>deleteBookByID(@PathVariable String id){
         return bookService.deleteBookByID(id);
+    }
+
+    @GetMapping("/action-genre")
+    public List <Book> actionGenre(){
+        return bookRepo.findByGenre("Action");
+    }
+
+    @GetMapping("/comedy-genre")
+    public List <Book> comedyGenre(){
+        return bookRepo.findByGenre("Comedy");
+    }
+
+    @GetMapping("/horror-genre")
+    public List <Book> horrorGenre(){
+        return bookRepo.findByGenre("Horror");
+    }
+
+    @GetMapping("/knowledge-genre")
+    public List <Book> knowledgeGenre(){
+        return bookRepo.findByGenre("Knowledge");
+    }
+
+    @GetMapping("/love-genre")
+    public List <Book> loveGenre(){
+        return bookRepo.findByGenre("Love");
+    }
+
+    @GetMapping("/fantasy-genre")
+    public List <Book> fantasyGenre(){
+        return bookRepo.findByGenre("Fantasy");
     }
 }
